@@ -2,7 +2,7 @@
 
 A small, consistent analytics API — `track`, `identify`, `captureException` — shared across projects, backed by [PostHog](https://posthog.com).
 
-It's a thin wrapper, not a new analytics engine: `eventlens/browser` wraps [`posthog-js`](https://posthog.com/docs/libraries/js) and `eventlens/server` wraps [`posthog-node`](https://posthog.com/docs/libraries/node). The point is that consuming projects depend on **this** package's stable API instead of calling a specific PostHog SDK directly, so the underlying provider can change in one place without touching every project.
+It's a thin wrapper: `eventlens/browser` wraps [`posthog-js`](https://posthog.com/docs/libraries/js) and `eventlens/server` wraps [`posthog-node`](https://posthog.com/docs/libraries/node). The point is that consuming projects depend on **this** package's stable API instead of calling a specific PostHog SDK directly, so the underlying provider can change in one place without touching every project.
 
 ## Install
 
