@@ -1,5 +1,5 @@
 {
-  "name": "eventlens",
+  "name": "@alemm12/eventlens",
   "version": "0.1.0",
   "description": "A small, consistent analytics API (track/identify/captureException) shared across projects, backed by PostHog.",
   "license": "MIT",
@@ -10,6 +10,9 @@
   },
   "type": "module",
   "sideEffects": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "dist"
   ],

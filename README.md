@@ -2,12 +2,12 @@
 
 A small, consistent analytics API — `track`, `identify`, `captureException` — shared across projects, backed by [PostHog](https://posthog.com).
 
-It's a thin wrapper: `eventlens/browser` wraps [`posthog-js`](https://posthog.com/docs/libraries/js) and `eventlens/server` wraps [`posthog-node`](https://posthog.com/docs/libraries/node). The point is that consuming projects depend on **this** package's stable API instead of calling a specific PostHog SDK directly, so the underlying provider can change in one place without touching every project.
+It's a thin wrapper: `@alemm12/eventlens/browser` wraps [`posthog-js`](https://posthog.com/docs/libraries/js) and `@alemm12/eventlens/server` wraps [`posthog-node`](https://posthog.com/docs/libraries/node). The point is that consuming projects depend on **this** package's stable API instead of calling a specific PostHog SDK directly, so the underlying provider can change in one place without touching every project.
 
 ## Install
 
 ```sh
-npm install eventlens
+npm install @alemm12/eventlens
 ```
 
 You'll need a PostHog project API key. PostHog's free tier covers 1M events/month, 100K exceptions/month, and 5K session recordings/month — see [posthog.com/pricing](https://posthog.com/pricing). Self-hosting is also free (MIT-licensed core) if you'd rather run it yourself.
@@ -17,7 +17,7 @@ You'll need a PostHog project API key. PostHog's free tier covers 1M events/mont
 For client-side apps (React, Next.js, etc). Call `createBrowserAnalytics` once at startup — repeat calls reuse the same underlying PostHog instance.
 
 ```ts
-import { createBrowserAnalytics } from "eventlens/browser";
+import { createBrowserAnalytics } from "@alemm12/eventlens/browser";
 
 const analytics = createBrowserAnalytics({
   apiKey: process.env.NEXT_PUBLIC_POSTHOG_KEY!,
@@ -35,7 +35,7 @@ analytics.reset(); // call on logout
 For backend services / API routes / scripts. There's no persisted session, so every call takes an explicit `distinctId` for the actor the event belongs to.
 
 ```ts
-import { createServerAnalytics } from "eventlens/server";
+import { createServerAnalytics } from "@alemm12/eventlens/server";
 
 const analytics = createServerAnalytics({
   apiKey: process.env.POSTHOG_KEY!,
@@ -54,7 +54,7 @@ By default the server client flushes every event immediately (`flushImmediately:
 
 ## Why two entry points instead of one?
 
-`eventlens` (the default import) only exports shared types — no SDK code. Importing `eventlens/browser` or `eventlens/server` explicitly means a backend project never bundles `posthog-js`, and a browser bundle never pulls in `posthog-node`.
+`@alemm12/eventlens` (the default import) only exports shared types — no SDK code. Importing `@alemm12/eventlens/browser` or `@alemm12/eventlens/server` explicitly means a backend project never bundles `posthog-js`, and a browser bundle never pulls in `posthog-node`.
 
 ## Development
 
